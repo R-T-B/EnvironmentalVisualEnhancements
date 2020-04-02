@@ -15,7 +15,7 @@ namespace PQSManager
         String body;
 
         [ConfigItem]
-        float deactivateDistance = 825000;
+        float deactivateDistance = 175000;
 
         float cameraDistance;
         public override String ToString() { return body; }
