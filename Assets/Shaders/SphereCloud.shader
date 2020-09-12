@@ -209,7 +209,8 @@ Shader "EVE/Cloud" {
 					scolor *= Terminator(normalize(_WorldSpaceLightPos0), worldNormal);
 					scolor.a = transparency;
 #ifdef SOFT_DEPTH_ON
-					float depth = UNITY_SAMPLE_DEPTH(tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(IN.projPos)));
+					//float depth = UNITY_SAMPLE_DEPTH(tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(IN.projPos)));
+					float depth = SAMPLE_DEPTH_TEXTURE_PROJ(tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(IN.projPos))); // fixes clouds disappearing at ~150km height
 					depth = LinearEyeDepth(depth);
 					float partZ = IN.projPos.z;
 					float fade = saturate(_InvFade * (depth - partZ));
